@@ -106,6 +106,9 @@ class ProfileHomePage extends StatelessWidget {
     );
   }
 
+  /**
+   * Retourne un Widget Container qui définit une avatar dans une forme circulaire.
+   */
   Container _getAvatar() {
     return Container(
       child: CircleAvatar(
