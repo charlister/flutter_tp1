@@ -30,6 +30,25 @@ class ProfileHomePage extends StatelessWidget {
     );
   }
 
+  Row _getTextRow(String text) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center, // pour centrer Row
+      children: [
+        Center(
+          child: Text(
+            text,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Color.fromARGB(255, 255, 255, 255),
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
   /**
    * Retourne un Widget Container qui définit une Card
    */
@@ -49,54 +68,9 @@ class ProfileHomePage extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center, // pour centrer la colonne dans Card
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center, // pour centrer Row
-                    children: [
-                      Center(
-                        child: Text(
-                          "Rihab Haoulani",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.center, // pour centrer Row
-                      children:[
-                        Center(
-                          child: Text(
-                            "rh@haha.com",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.bold
-                            ),
-                          ),
-                        )
-                      ]
-                  ),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.center, // pour centrer Row
-                      children:[
-                        Center(
-                          child: Text(
-                            "instagram: xxxx",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.bold
-                            ),
-                          ),
-                        )
-                      ]
-                  )
+                  _getTextRow("Rihab Haoulani"),
+                  _getTextRow("rh@haha.com"),
+                  _getTextRow("instagram: xxxx"),
                 ],
               )
             ],
