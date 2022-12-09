@@ -11,22 +11,25 @@ class ProfileHomePage extends StatelessWidget {
         centerTitle: false,
       ),
 
-      body: Container(
-        alignment: Alignment.center,
-        child: Stack(
-          children: [
-            _getCard(),
-            Positioned(
-              top: .0,
-              left: .0,
-              right: .0,
-              child: Center(
-                child: _getAvatar(),
+      body: SingleChildScrollView(
+        child: Container(
+          alignment: Alignment.center,
+          child: Stack(
+            children: [
+              _getCard(),
+              Positioned(
+                top: .0,
+                left: .0,
+                right: .0,
+                child: Center(
+                  child: _getAvatar(),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+      )
+
     );
   }
 
