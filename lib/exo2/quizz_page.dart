@@ -101,8 +101,8 @@ class SomeQuizzPageState extends State<QuizzPage> {
                     Container(
                       child: Image(
                         image: AssetImage(_questions[_questionNumber].imagePath),
-                        height: 200,
-                        width: 200,
+                        height: 300,
+                        width: 300,
                       ),
                     ),
                     // Question
