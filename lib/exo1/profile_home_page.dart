@@ -7,29 +7,30 @@ class ProfileHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile Card"),
+        title: const Text("Profile Card"),
         centerTitle: false,
       ),
 
-      body: SingleChildScrollView(
-        child: Container(
-          alignment: Alignment.center,
-          child: Stack(
-            children: [
-              _getCard(),
-              Positioned(
-                top: .0,
-                left: .0,
-                right: .0,
-                child: Center(
-                  child: _getAvatar(),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Container(
+            alignment: Alignment.center,
+            child: Stack(
+              children: [
+                _getCard(),
+                Positioned(
+                  top: .0,
+                  left: .0,
+                  right: .0,
+                  child: Center(
+                    child: _getAvatar(),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      )
-
+      ),
     );
   }
 
@@ -41,7 +42,7 @@ class ProfileHomePage extends StatelessWidget {
           child: Text(
             text,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Color.fromARGB(255, 255, 255, 255),
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold
@@ -72,7 +73,7 @@ class ProfileHomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center, // pour centrer la colonne dans Card
                 children: [
                   _getTextRow("Rihab Haoulani"),
-                  _getTextRow("rh@haha.com"),
+                  _getTextRow("rh@haha.jc"),
                   _getTextRow("instagram: xxxx"),
                 ],
               )
@@ -88,7 +89,7 @@ class ProfileHomePage extends StatelessWidget {
    */
   Container _getAvatar() {
     return Container(
-      child: CircleAvatar(
+      child: const CircleAvatar(
         radius: 50.0,
         backgroundColor: Colors.deepPurple,
         child: CircleAvatar(

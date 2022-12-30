@@ -69,7 +69,7 @@ class SomeQuizzPageState extends State<QuizzPage> {
             children: [
               // Numéro de question
               Container(
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                       top: 10,
                       left: 10,
                       bottom: 10
@@ -78,7 +78,7 @@ class SomeQuizzPageState extends State<QuizzPage> {
                   child: Text(
                     'Question ${_questionNumber + 1}/${_questions.length}',
                     textAlign: TextAlign.left,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 17.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -86,7 +86,7 @@ class SomeQuizzPageState extends State<QuizzPage> {
               ),
 
               // Séparateur
-              Divider(
+              const Divider(
                 color: Color.fromARGB(100, 0, 0, 0),
                 indent: 10,
                 endIndent: 10,
@@ -98,30 +98,8 @@ class SomeQuizzPageState extends State<QuizzPage> {
                 child: Column(
                   children: [
                     // Image
-                    Container(
-                      child: Image(
-                        image: AssetImage(_questions[_questionNumber].imagePath),
-                        height: 300,
-                        width: 300,
-                      ),
-                    ),
-                    // Question
-                    Container(
-                      constraints: const BoxConstraints(minHeight: 100),
-                      margin: EdgeInsets.only(left: 30, top: 10, right: 30, bottom: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15.0),
-                        color: Color.fromRGBO(220, 220, 220, 1),
-                      ),
-                      child: Center(
-                        child: Text(
-                          _questions[_questionNumber].questionText,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
+                    buildThemeImage(_questions[_questionNumber].imagePath),
+                    buildQuestion(_questions[_questionNumber].questionText),
                   ],
                 ),
               ),
@@ -129,7 +107,7 @@ class SomeQuizzPageState extends State<QuizzPage> {
               Row( // pour les boutons
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  TextButton(style: ButtonStyle(
+                  TextButton(style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll<Color>(Colors.lightBlue)
                   ),
                     onPressed: () {
@@ -137,9 +115,9 @@ class SomeQuizzPageState extends State<QuizzPage> {
                         _userChoice = true;
                       });
                     },
-                    child: Text("VRAI", style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1)),),
+                    child: const Text("VRAI", style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1)),),
                   ),
-                  TextButton(style: ButtonStyle(
+                  TextButton(style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll<Color>(Colors.lightBlue)
                   ),
                     onPressed: () {
@@ -147,10 +125,10 @@ class SomeQuizzPageState extends State<QuizzPage> {
                         _userChoice = false;
                       });
                     },
-                    child: Text("FAUX", style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1)),),
+                    child: const Text("FAUX", style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1)),),
                   ),
                   TextButton(
-                    style: ButtonStyle(
+                    style: const ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll<Color>(Colors.lightBlue)
                     ),
                     onPressed: () {
@@ -166,7 +144,7 @@ class SomeQuizzPageState extends State<QuizzPage> {
                         }
                       });
                     },
-                    child: Text("SUIVANT", style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1)),),
+                    child: const Text("SUIVANT", style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1)),),
                   )
                 ],
               ),
@@ -176,7 +154,7 @@ class SomeQuizzPageState extends State<QuizzPage> {
           Column( // Résultats
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Center(
+              const Center(
                 child: Text(
                   'Score :',
                   style: TextStyle(
@@ -187,7 +165,7 @@ class SomeQuizzPageState extends State<QuizzPage> {
               Center(
                 child: Text(
                   '$_score/${_questions.length}',
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 25
                   ),
                 ),
@@ -196,28 +174,61 @@ class SomeQuizzPageState extends State<QuizzPage> {
                 child: Image(
                   height: 50,
                   width: 50,
-                  image: _score > _score/2 ? AssetImage('images/good.png') : AssetImage('images/bad.png'),
+                  image: _score > _score/2 ? const AssetImage('images/good.png') : const AssetImage('images/bad.png'),
                 ),
               ),
-              Center(
-                child: TextButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll<Color>(Colors.lightBlue)
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      _reset();
-                    });
-                  },
-                  child: Text("Recommencer", style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1)),),
-                ),
-              )
             ],
           ), // pour le résultat
         ),
       )
     );
   }
+}
+
+Card buildThemeImage(String imagePath) {
+  return Card(
+    child: Container(
+      child: Image(
+        image: AssetImage(imagePath),
+        height: 300,
+        width: 300,
+      ),
+    ),
+  );
+}
+
+Card buildQuestion(String question) {
+  return Card(
+    color: Colors.blue,
+    elevation: 4,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+    child: Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        // gradient: const LinearGradient(
+        //   colors: [Colors.lightBlue, Colors.blue],
+        //   begin: Alignment.topLeft,
+        //   end: Alignment.bottomRight,
+        // ),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      alignment: Alignment.center,
+      child: Column(
+        children: [
+          const SizedBox(height: 16),
+          Text(
+            question,
+            style: const TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
 }
 
 class Question {

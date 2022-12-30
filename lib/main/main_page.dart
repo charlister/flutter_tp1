@@ -7,43 +7,53 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile Card"),
+        title: const Text("Menu"),
         centerTitle: false,
       ),
 
-      body: SingleChildScrollView(
-        child: Container(
+      body: Center(
+        child: SingleChildScrollView(
+          child: Container(
             alignment: Alignment.center,
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextButton(style: ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll<Color>(
-                          Colors.lightBlue)
-                  ),
+                  TextButton(style: const ButtonStyle(
+                    backgroundColor: MaterialStatePropertyAll<Color>(
+                      Colors.lightBlue)
+                    ),
                     onPressed: () {
                       Navigator.pushNamed(context, "/exo1");
                     },
-                    child: Text("Profile Page",
-                      style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1)),),
+                    child: const Text(
+                      "Profile Page",
+                      style: TextStyle(
+                        color: Color.fromRGBO(255, 255, 255, 1),
+                      ),
+                    ),
                   ),
-                  TextButton(style: ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll<Color>(
-                          Colors.lightBlue)
-                  ),
+                  TextButton(
+                    style: const ButtonStyle(
+                    backgroundColor: MaterialStatePropertyAll<Color>(
+                      Colors.lightBlue)
+                    ),
                     onPressed: () {
                       Navigator.pushNamed(context, "/exo2");
                     },
-                    child: Text("Quizz Page",
-                      style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1)),),
+                    child: const Text(
+                      "Quizz Page",
+                      style: TextStyle(
+                        color: Color.fromRGBO(255, 255, 255, 1)
+                      ),
+                    ),
                   )
                 ],
               ),
             )
-
+          ),
         ),
-      )
+      ),
     );
   }
 }
